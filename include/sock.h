@@ -14,7 +14,6 @@
 #include <pthread.h>
 #include <zlib.h>
 
-#include "json.h"
 #include "shared.h"
 
 #define PORT 8888

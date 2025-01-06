@@ -138,45 +138,19 @@ void *udp_listener(void *arg) {
         }
 
         uint8_t *payload = buffer + HEADER_SIZE;
-        printf("Valid packet received, length: %u\n", payload_length);
 
-        size_t decompressed_length = sizeof(decompressed_buffer);
+        // decompress packet
+        size_t decompressed_length = sizeof(decompressed_buffer) - 1;
         inflate_buffer(payload, payload_length, decompressed_buffer, &decompressed_length);
         decompressed_buffer[decompressed_length] = '\x00';
 
+        // send packet data to main thread
         pthread_mutex_lock(&shared_data->mutex);
-
-        memcpy(shared_data->buffer, decompressed_buffer, decompressed_length);
+        memcpy(shared_data->buffer, decompressed_buffer, decompressed_length + 1);
+        shared_data->size = decompressed_length;
         shared_data->data_available = true;
-
         pthread_cond_signal(&shared_data->cond);
-
         pthread_mutex_unlock(&shared_data->mutex);
-
-        /*
-        struct json_value_s *root = json_parse(decompressed_buffer, decompressed_length);
-        struct json_object_s *obj = json_value_as_object(root);
-        struct json_object_element_s *elem = obj->start;
-        while (elem != NULL) {
-            if (elem->value->type == json_type_object) {
-                if (strlen(elem->name->string) == strlen("/intelcpu/0/load/0") && strcmp(elem->name->string, "/intelcpu/0/load/0") == 0) {
-                    printf("%s\n", elem->name->string);
-                    struct json_object_s *obj2 = json_value_as_object(elem->value);
-                    struct json_object_element_s *elem2 = obj2->start;
-                    while (elem2 != NULL) {
-                        if (strlen(elem2->name->string) == strlen("Value") && strcmp(elem2->name->string, "Value") == 0) {
-                            struct json_number_s *value = json_value_as_number(elem2->value);
-                            int num_value = strtol(value->number, NULL, 10);
-                            printf(">> %s %i\n", elem2->name->string, num_value);
-                        }
-                        elem2 = elem2->next;
-                    }
-                }
-            }
-            elem = elem->next;
-        }
-        free(root);
-        */
     }
 
     close(sockfd);

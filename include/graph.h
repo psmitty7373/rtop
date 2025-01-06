@@ -21,6 +21,7 @@ typedef struct _Graph {
     int max;
     size_t sz;
     size_t limit;
+    char *identifier;
     LogEntry *head;
     LogEntry *tail;
 } Graph;
