@@ -3,7 +3,7 @@
 
 #define SHARED_BUFFER_SIZE 65535
 
-typedef struct {
+typedef struct _SharedBuffer {
     char buffer[SHARED_BUFFER_SIZE];
     size_t size;
     bool data_available;

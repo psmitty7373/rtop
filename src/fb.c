@@ -79,13 +79,7 @@ FrameBuffer* fb_init() {
     return fb;
 
     cleanup:
-    if (fb->bb) {
-        free(fb->bb);
-    }
-    if (fb->ptr) {
-        munmap(fb->ptr, fb->sz);
-    }
-    close(fb->fd);
+    fb_deinit(fb);
 
     return NULL;
 }
@@ -100,6 +94,9 @@ void fb_deinit(FrameBuffer *fb) {
         fb->ptr = NULL;
     }
     close(fb->fd);
+    if (fb) {
+        free(fb);
+    }
 
     fb = NULL;
 }

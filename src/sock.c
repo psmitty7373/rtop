@@ -68,7 +68,15 @@ void *udp_listener(void *arg) {
     }
 
     printf("UDP listener thread started on port %d\n", PORT);
-    running = true;
+
+    struct timeval timeout;
+    timeout.tv_sec = 1;
+    timeout.tv_usec = 0;
+
+    if (setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout)) < 0) {
+        perror("setsockopt failed");
+        return NULL;
+    }
 
     while (running) {
         ssize_t received;
@@ -80,8 +88,8 @@ void *udp_listener(void *arg) {
 
             if (received < 0) {
                 if (errno == EAGAIN || errno == EWOULDBLOCK) {
-                    usleep(1000);
-                    continue;
+                    usleep(100000);
+                    break;
                 } else {
                     perror("recvfrom failed");
                     break;
@@ -142,6 +150,10 @@ void *udp_listener(void *arg) {
         // decompress packet
         size_t decompressed_length = sizeof(decompressed_buffer) - 1;
         inflate_buffer(payload, payload_length, decompressed_buffer, &decompressed_length);
+        printf("decompressed_length: %d\n", decompressed_length);
+        if (!decompressed_length) {
+            continue;
+        }
         decompressed_buffer[decompressed_length] = '\x00';
 
         // send packet data to main thread

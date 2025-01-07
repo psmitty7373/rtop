@@ -99,11 +99,10 @@ int32_t *utf8_to_utf32(const uint8_t *utf8_word)
     return utf32_word;
 }
 
-void ft_draw_char(FT_Face face, FrameBuffer *fb, int c, size_t *x, size_t y) {
+void ft_draw_char(FT_Face face, FrameBuffer *fb, int c, size_t *x, size_t y, uint16_t color) {
     FT_UInt gi = FT_Get_Char_Index (face, c);
     FT_Load_Glyph (face, gi, FT_LOAD_DEFAULT);
-    int bbox_ymax = face->bbox.yMax / 64;
-    int y_off = bbox_ymax - face->glyph->metrics.horiBearingY / 64;
+    int y_off = face->size->metrics.ascender/64 - face->glyph->metrics.horiBearingY/64;
     int glyph_width = face->glyph->metrics.width / 64;
     int advance = face->glyph->metrics.horiAdvance / 64;
     int x_off = (advance - glyph_width) / 2;
@@ -117,28 +116,32 @@ void ft_draw_char(FT_Face face, FrameBuffer *fb, int c, size_t *x, size_t y) {
             unsigned char p = face->glyph->bitmap.buffer [i * face->glyph->bitmap.pitch + j];
             if (p)
             {
-                fb_set_pixel(fb, *x + j + x_off, row_offset, rgb_to_rgb565(p, p, p));
+                fb_set_pixel(fb, *x + j + x_off, row_offset, color);
             }
         }
     }
     *x += advance;
 }
 
-void ft_draw_string(FT_Face face, FrameBuffer *fb, const uint8_t *s, size_t x, size_t y)
+void ft_draw_string(FT_Face face, FrameBuffer *fb, const char *s, size_t x, size_t y, uint16_t color)
 {
     int32_t *s32 = utf8_to_utf32(s);
+    int32_t *t = s32;
 
-    while (*s32)
+    while (*t)
     {
-        ft_draw_char(face, fb, *s32, &x, y);
-        s32++;
+        ft_draw_char(face, fb, *t, &x, y, color);
+        t++;
+    }
+
+    if (s32) {
+        free(s32);
     }
 }
 
 bool ft_init(const char* ttf_file, FT_Face* face, FT_Library* ft, int req_size)
 {
     bool ret = false;
-    printf("Requested glyph size is %d px\n", req_size);
     if (FT_Init_FreeType(ft) == 0)
     {
         if (FT_New_Face(*ft, ttf_file, 0, face) == 0)

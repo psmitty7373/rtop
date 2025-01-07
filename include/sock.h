@@ -23,7 +23,7 @@
 #define CRC32_SIZE 4
 #define BUFFER_SIZE (MAX_PAYLOAD_LEN + HEADER_SIZE + CRC32_SIZE) // Magic (4) + Length (4) + Payload + CRC32 (4)
 
-static volatile bool running = false;
+extern volatile bool running;
 
 void *udp_listener(void *arg);
 
