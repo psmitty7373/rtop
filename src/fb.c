@@ -133,6 +133,37 @@ void fb_draw_line(FrameBuffer *fb, size_t x1, size_t y1, size_t x2, size_t y2, u
     }
 }
 
+void fb_draw_line_shaded(FrameBuffer *fb, size_t x1, size_t y1, size_t x2, size_t y2, size_t bottom, uint16_t line_color, uint16_t shade_color) {
+    int dx = abs((int)x2 - (int)x1);
+    int dy = abs((int)y2 - (int)y1);
+    int sx = x1 < x2 ? 1 : -1;
+    int sy = y1 < y2 ? 1 : -1;
+    int err = dx - dy;
+
+    while (1) {
+        fb_set_pixel(fb, x1, y1, line_color);
+
+        if (x1 == x2 && y1 == y2) {
+            break;
+        }
+
+        int e2 = 2 * err;
+
+        if (e2 > -dy) {
+            err -= dy;
+            x1 += sx;
+            if (y1 < bottom) {
+                fb_draw_line(fb, x1, y1 + 1, x1, bottom, shade_color);
+            }
+        }
+
+        if (e2 < dx) {
+            err += dx;
+            y1 += sy;
+        }
+    }
+}
+
 void fb_set_pixel(FrameBuffer *fb, size_t x, size_t y, uint16_t rgb565) {
     if (x < fb->w && y < fb->h) {
         size_t pixel_offset = y * fb->w + x;

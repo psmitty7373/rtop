@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <ctype.h>
+#include <png.h>
 
 #include <freetype2/ft2build.h>
 #include <freetype/freetype.h>
@@ -14,17 +15,21 @@
 #include "ft.h"
 #include "widgets.h"
 
-typedef struct Font {
-    FT_Face face;
-    char *filename;
-} Font;
+#define MAX_WIDTH 10000
+#define MAX_HEIGHT 10000
+#define HEADER_SIZE 8
 
 typedef struct Config {
+    // widgets
     Widget *widgets;
     size_t widget_count;
+    // fonts
     FT_Library ft;
     Font *fonts;
     size_t font_count;
+    // pngs
+    Png *pngs;
+    size_t png_count;
 } Config;
 
 int load_config(const char *filename, Config *config);

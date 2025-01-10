@@ -150,11 +150,12 @@ void *udp_listener(void *arg) {
         // decompress packet
         size_t decompressed_length = sizeof(decompressed_buffer) - 1;
         inflate_buffer(payload, payload_length, decompressed_buffer, &decompressed_length);
-        printf("decompressed_length: %d\n", decompressed_length);
         if (!decompressed_length) {
             continue;
         }
+        //printf("%ld\n", decompressed_length);
         decompressed_buffer[decompressed_length] = '\x00';
+        //printf(">>>%s<<<\n", decompressed_buffer);
 
         // send packet data to main thread
         pthread_mutex_lock(&shared_data->mutex);

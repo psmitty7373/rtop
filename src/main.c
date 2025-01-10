@@ -130,7 +130,7 @@ int main() {
         fb_clear(fb);
 
         // draw fps string
-        ft_draw_string(config.fonts[0].face, fb, fps_text, 0, 0, rgb_to_rgb565(0xff,0xff,0xff));
+        ft_draw_string(config.fonts[0].face, fb, fps_text, 360, 680, rgb_to_rgb565(0xff,0xff,0xff));
 
         // draw graphs
         for (size_t i = 0; i < config.widget_count; i++) {

@@ -32,6 +32,7 @@ FrameBuffer* fb_init();
 void fb_set_graphics_mode();
 void fb_clear(FrameBuffer *fb);
 void fb_draw_line(FrameBuffer *fb, size_t x1, size_t y1, size_t x2, size_t y2, uint16_t rgb565);
+void fb_draw_line_shaded(FrameBuffer *fb, size_t x1, size_t y1, size_t x2, size_t y2, size_t bottom, uint16_t line_color, uint16_t shade_color);
 void fb_set_pixel(FrameBuffer *fb, size_t x, size_t y, uint16_t rgb565);
 void fb_swap(FrameBuffer *fb);
 void fb_deinit(FrameBuffer *fb);

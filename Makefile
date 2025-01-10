@@ -7,7 +7,7 @@ DEP_DIR := $(BUILD_DIR)/deps
 # Define the compiler and flags
 CC := gcc
 CFLAGS := -Wall -Wextra -I$(INCLUDE_DIR) -I /usr/include/freetype2/ -g
-LDFLAGS := -lfreetype -lz
+LDFLAGS := -lfreetype -lz -lpng
 
 # Find all source files and corresponding object files
 SRCS := $(wildcard $(SRC_DIR)/*.c)

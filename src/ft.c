@@ -27,7 +27,7 @@ void face_get_string_extent(FT_Face face, const int32_t *s, int *x, int *y)
     *y = y_extent;
 }
 
-int next_utf8_glyph_length(const uint8_t *word) {
+int next_utf8_glyph_length(const char *word) {
     // 1-byte glyph (0xxxxxxx).
     if ((*word & 0x80) == 0) {
         return 1;
@@ -49,11 +49,11 @@ int next_utf8_glyph_length(const uint8_t *word) {
     return -1;
 }
 
-int32_t *utf8_to_utf32(const uint8_t *utf8_word)
+int32_t *utf8_to_utf32(const char *utf8_word)
 {
     // Compute the length of the resulting UTF-32 sequence.
     int word_length = 0;
-    const uint8_t *utf8_word_ptr = utf8_word;
+    const char *utf8_word_ptr = utf8_word;
 
     while (*utf8_word_ptr) {
         int curr_glyph_length = next_utf8_glyph_length(utf8_word_ptr);

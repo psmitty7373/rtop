@@ -5,10 +5,29 @@
             "size": 25
         }
     ],
+    "pngs": [
+        {
+            "filename": "gpu.png"
+        }
+    ],
     "widgets": [
         {
+            "type": "png",
+            "top": 400,
+            "left": 0,
+            "png": "gpu.png"
+        },
+        {
+            "type": "text",
+            "top": 0,
+            "left": 0,
+            "font": "consolas.ttf",
+            "line_color": "#7AEFB2",
+            "text": "Utilization"
+        },
+        {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 0,
             "width": 45,
             "height": 45,
@@ -20,7 +39,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 45,
             "width": 45,
             "height": 45,
@@ -32,7 +51,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 90,
             "width": 45,
             "height": 45,
@@ -44,7 +63,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 135,
             "width": 45,
             "height": 45,
@@ -56,7 +75,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 180,
             "width": 45,
             "height": 45,
@@ -68,7 +87,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 225,
             "width": 45,
             "height": 45,
@@ -80,7 +99,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 270,
             "width": 45,
             "height": 45,
@@ -92,7 +111,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 315,
             "width": 45,
             "height": 45,
@@ -104,7 +123,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 360,
             "width": 45,
             "height": 45,
@@ -116,7 +135,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 405,
             "width": 45,
             "height": 45,
@@ -128,7 +147,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 450,
             "width": 45,
             "height": 45,
@@ -140,7 +159,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 495,
             "width": 45,
             "height": 45,
@@ -152,7 +171,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 540,
             "width": 45,
             "height": 45,
@@ -164,7 +183,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 585,
             "width": 45,
             "height": 45,
@@ -176,7 +195,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 630,
             "width": 45,
             "height": 45,
@@ -188,7 +207,7 @@
         },
         {
             "type": "graph",
-            "top": 100,
+            "top": 20,
             "left": 675,
             "width": 44,
             "height": 45,
@@ -198,10 +217,9 @@
             "line_color": "#7AEFB2",
             "identifier": "/intelcpu/0/load/17"
         },
-
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 0,
             "width": 45,
             "height": 45,
@@ -213,7 +231,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 45,
             "width": 45,
             "height": 45,
@@ -225,7 +243,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 90,
             "width": 45,
             "height": 45,
@@ -237,7 +255,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 135,
             "width": 45,
             "height": 45,
@@ -249,7 +267,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 180,
             "width": 45,
             "height": 45,
@@ -261,7 +279,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 225,
             "width": 45,
             "height": 45,
@@ -273,7 +291,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 270,
             "width": 45,
             "height": 45,
@@ -285,7 +303,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 315,
             "width": 45,
             "height": 45,
@@ -297,7 +315,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 360,
             "width": 45,
             "height": 45,
@@ -309,7 +327,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 405,
             "width": 45,
             "height": 45,
@@ -321,7 +339,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 450,
             "width": 45,
             "height": 45,
@@ -333,7 +351,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 495,
             "width": 45,
             "height": 45,
@@ -345,7 +363,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 540,
             "width": 45,
             "height": 45,
@@ -357,7 +375,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 585,
             "width": 45,
             "height": 45,
@@ -369,7 +387,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 630,
             "width": 45,
             "height": 45,
@@ -381,7 +399,7 @@
         },
         {
             "type": "graph",
-            "top": 145,
+            "top": 65,
             "left": 675,
             "width": 44,
             "height": 45,
@@ -391,12 +409,11 @@
             "line_color": "#7AEFB2",
             "identifier": "/intelcpu/0/load/33"
         },
-
         {
             "type": "graph",
-            "top": 190,
+            "top": 110,
             "left": 0,
-            "width": 719,
+            "width": 360,
             "height": 100,
             "min": 0,
             "max": 100,
@@ -406,7 +423,7 @@
         },
         {
             "type": "value",
-            "top": 200,
+            "top": 120,
             "left": 5,
             "font": "consolas.ttf",
             "line_color": "#B04E3B",
@@ -414,9 +431,37 @@
         },
         {
             "type": "graph",
-            "top": 290,
+            "top": 110,
+            "left": 360,
+            "width": 359,
+            "height": 100,
+            "min": 0,
+            "max": 100,
+            "border_color": "#78D9FB",
+            "line_color": "#7AEFB2",
+            "identifier": "/gpu-nvidia/0/load/7"
+        },
+        {
+            "type": "value",
+            "top": 120,
+            "left": 365,
+            "font": "consolas.ttf",
+            "line_color": "#B04E3B",
+            "identifier": "/gpu-nvidia/0/load/7"
+        },
+        {
+            "type": "text",
+            "top": 220,
             "left": 0,
-            "width": 719,
+            "font": "consolas.ttf",
+            "line_color": "#7AEFB2",
+            "text": "Temperatures"
+        },
+        {
+            "type": "graph",
+            "top": 240,
+            "left": 0,
+            "width": 360,
             "height": 100,
             "min": 25,
             "max": 100,
@@ -426,11 +471,32 @@
         },
         {
             "type": "value",
-            "top": 300,
+            "top": 250,
             "left": 5,
             "font": "consolas.ttf",
             "line_color": "#B04E3B",
             "identifier": "/intelcpu/0/temperature/0"
+        },
+        {
+            "type": "graph",
+            "top": 240,
+            "left": 360,
+            "width": 359,
+            "height": 100,
+            "min": 25,
+            "max": 100,
+            "border_color": "#78D9FB",
+            "line_color": "#7AEFB2",
+            "identifier": "CorsairLink/CorsairLink/\\\\?\\hid#vid_1b1c\u0026pid_0c1c\u0026mi_00#9\u00261ee957c1\u00260\u00260000#{4d1e55b2-f16f-11cf-88cb-001111000030}/TemperatureSensor/0"
+        },
+        {
+            "type": "value",
+            "top": 250,
+            "left": 365,
+            "precision": 2,
+            "font": "consolas.ttf",
+            "line_color": "#B04E3B",
+            "identifier": "CorsairLink/CorsairLink/\\\\?\\hid#vid_1b1c\u0026pid_0c1c\u0026mi_00#9\u00261ee957c1\u00260\u00260000#{4d1e55b2-f16f-11cf-88cb-001111000030}/TemperatureSensor/0"
         },
         {
             "type": "text",

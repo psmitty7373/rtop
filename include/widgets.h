@@ -11,28 +11,50 @@
 #include "ft.h"
 #include "fb.h"
 
+typedef struct Font {
+    FT_Face face;
+    char *filename;
+} Font;
+
+typedef struct Png {
+    char *filename;
+    size_t size;
+    size_t width;
+    size_t height;
+    uint16_t *data;
+} Png;
+
 typedef struct LogEntry {
     struct LogEntry *next;
+    struct LogEntry *prev;
     double value;
 } LogEntry;
 
 typedef struct Widget {
+    char *type;
+    char *identifier;
+    // location
     size_t top;
     size_t left;
     size_t width;
     size_t height;
+    // scaling
     int min;
     int max;
-    size_t limit;
-    size_t size;
+    size_t scale;
+    size_t precision;
+    // colors
     bool has_border;
     uint16_t border_color;
     uint16_t line_color;
-    char *identifier;
-    char *type;
-    char *font;
+    // linked to file
+    char *filename;
+    // text
     char *text;
+    size_t size;
+    // internal
     FT_Face face;
+    Png *png;
     LogEntry *head;
     LogEntry *tail;
     double value;
